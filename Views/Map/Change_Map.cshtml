@@ -1,0 +1,34 @@
+@model Map
+
+
+
+<form asp-controller="Map" asp-action="Change_Map" method="post">
+    <div class="row">
+        <div class="col-8">
+            <div class="bg-white p-4">
+                <h2 class="mb-4">Field to Maps Connection Requests </h2>
+                <hr>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MapId">
+
+                
+                
+                <div class="mb-3">
+                    <label asp-for="MapCoordinate" class="form-label"></label>
+                    <input asp-for="MapCoordinate" class="form-control"></input>
+                </div>
+                
+
+
+
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</form>

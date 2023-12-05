@@ -1,0 +1,55 @@
+@model List<Map>
+
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Map List</h2>
+            
+            <table class="table tabled-bordered mt-3">
+                <thead>
+                    <tr>
+
+                        <th>MapdId</th>
+                        <th>Name</th>
+                        <th>Requests</th>
+                        <th>UserId</th>
+                        <th>UserName</th>
+                        <th style="width: 125px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MapId</td>
+                            <td>@item.MapCoordinate</td>
+                            <td>
+                                <ul>
+                                    @foreach (var request in item.Requests)
+                                    {
+                                        <li>@request.RequestId -> @request.RequestName</li>
+                                    }
+                                </ul>
+                            </td>
+                            
+                            <td>@(item.UserId != null ? item.UserId : 0) </td>
+                            
+                            @if(@item.UserId != null){
+                                <td>@item.User.UserName </td>
+                            }
+                            else{
+                                <td>null </td>
+                            }
+
+
+                            <td>
+                                <a asp-controller="Map" asp-action="Map_Requests" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Request</a>
+                                <a asp-controller="Map" asp-action="Change_Map" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Change</a>
+                                <a asp-controller="Map" asp-action="Details" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
