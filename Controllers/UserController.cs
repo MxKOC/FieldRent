@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -152,6 +153,11 @@ namespace FieldRent.Controllers
             {
                 return NotFound();
             }
+
+
+            var times = Enum.GetValues(typeof(Duration)).Cast<Duration>();
+            ViewBag.TimeList = new SelectList(times);
+
             var user = await _userRepository.Users.Select(x => new MapEditViewModel
             {
                 UserId = x.UserId,
@@ -178,6 +184,9 @@ namespace FieldRent.Controllers
             {
                 return NotFound();
             }
+
+
+            var time = model.Time;
 
             var Enum_Maps = MapIds.Select(id => _mapRepository.Maps.FirstOrDefault(i => i.MapId == id)).ToList();
 

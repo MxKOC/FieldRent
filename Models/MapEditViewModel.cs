@@ -14,11 +14,12 @@ namespace FieldRent.Models
         public List<Map> MapCheckIds { get; set; } = new List<Map>();
 
 
-
-
-
+        public Duration Time { get; set; }
 
     }
+
+
+
 
 public class MapChangeEditViewModel
     {

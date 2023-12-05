@@ -1,0 +1,33 @@
+@model DurationViewModel
+
+<form asp-controller="Map" asp-action="Deneme" method="post">
+    <div class="row">
+        <div class="col-8">
+            <div class="bg-white p-4">
+                <h2 class="mb-4">Duration </h2>
+                <hr>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                
+                
+                <div class="form-group">
+                    <label for="Time" class="control-label">Time</label>
+                    @Html.DropDownList("Time", ViewBag.TimeList as SelectList, "Please select", new { @class = "form-control" })
+                </div>
+
+
+
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</form>
+
+

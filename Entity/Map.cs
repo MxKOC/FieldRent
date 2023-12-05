@@ -1,5 +1,11 @@
 namespace FieldRent.Entity;
-
+public enum Duration
+{
+    Daily,
+    Weekly,
+    Mountly,
+    Yearly
+}
 public class Map
 {
     public int MapId { get; set; }
@@ -10,6 +16,7 @@ public class Map
     public DateTime? MapStart { get; set; }
     public DateTime? MapStop { get; set; }
     public bool MapIsActive { get; set; }
+    public Duration Time { get; set; }
 
     public int? UserId { get; set; }
     public User User { get; set; } = null!;

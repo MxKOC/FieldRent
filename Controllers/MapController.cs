@@ -50,202 +50,223 @@ namespace FieldRent.Controllers
 
 
 
-
-
-
-
-
         [HttpGet]
-        public async Task<IActionResult> Map_Requests(int? id)  // Sadece 1 map seçildiğinde onun requestlerinin seçilmesi
+        public IActionResult Deneme()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var map = await _mapRepository.Maps.Select(x => new MapRequestEditModel
-            {
-                MapId = x.MapId,
-                MapReqCheckIds = x.Requests,
-            }).FirstOrDefaultAsync(p => p.MapId == id);
-            ViewBag.yyy = await _requestRepository.Requests.ToListAsync();
 
-            return View(map);
+
+            var times = Enum.GetValues(typeof(Duration)).Cast<Duration>();
+
+            ViewBag.TimeList = new SelectList(times);
+            return View();
 
         }
 
 
+
         [HttpPost]
-        public IActionResult Map_Requests(MapRequestEditModel model, int[] ReqIds)
+        public IActionResult Deneme(DurationViewModel model)
         {
 
 
-            var entity = _mapRepository.Maps.Include(i => i.Requests).FirstOrDefault(m => m.MapId == model.MapId);// Gereksiz kaldı
+            var time = model.Time;
+            return RedirectToAction("Index");
+        }
 
-            if (entity == null)
+    
+
+
+    [HttpGet]
+    public async Task<IActionResult> Map_Requests(int? id)  // Sadece 1 map seçildiğinde onun requestlerinin seçilmesi
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var map = await _mapRepository.Maps.Select(x => new MapRequestEditModel
+        {
+            MapId = x.MapId,
+            MapReqCheckIds = x.Requests,
+        }).FirstOrDefaultAsync(p => p.MapId == id);
+        ViewBag.yyy = await _requestRepository.Requests.ToListAsync();
+
+        return View(map);
+
+    }
+
+
+    [HttpPost]
+    public IActionResult Map_Requests(MapRequestEditModel model, int[] ReqIds)
+    {
+
+
+        var entity = _mapRepository.Maps.Include(i => i.Requests).FirstOrDefault(m => m.MapId == model.MapId);// Gereksiz kaldı
+
+        if (entity == null)
+        {
+            return NotFound();
+        }
+
+
+        _mapRepository.EditMap( //Map e requestleri yolluyor
+            new Map
             {
-                return NotFound();
+
+                MapId = model.MapId,
+                Requests = ReqIds.Select(id => _requestRepository.Requests.FirstOrDefault(i => i.RequestId == id)).ToList()
             }
+        );
 
 
-            _mapRepository.EditMap( //Map e requestleri yolluyor
+
+        var enum_Requests = ReqIds.Select(id => _requestRepository.Requests.FirstOrDefault(i => i.RequestId == id)).ToList(); //değer almak için sadece
+        var newPrice = 0;
+        foreach (var item in enum_Requests)
+        {
+            newPrice += item.RequestPrice;
+        }
+
+        var user = _userRepository.Users.FirstOrDefault(user => user.Maps.Any(map => map.MapId == model.MapId));
+
+        _userRepository.EditUserPrice( //Map e requestler ücreetlerini yolluyor
+                       new User
+                       {
+                           UserPrice = newPrice,
+                           UserId = user.UserId
+                       }
+                   );
+
+        return RedirectToAction("Index");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    [HttpGet]
+    public async Task<IActionResult> Multiple_Map_Requests(List<int> ids)// 1den fazla map seçildiğinde onun requestlerinin seçilmesi
+    {
+        if (ids == null)
+        {
+            return NotFound();
+        }
+
+        var maps = await _mapRepository.Maps
+            .Where(x => ids.Contains(x.MapId)).ToListAsync();
+
+
+        ViewBag.yyy = await _requestRepository.Requests.ToListAsync();
+
+        var MapMultiIds = new List<int>();
+
+        foreach (var item in maps)
+        {
+            MapMultiIds.Add(item.MapId);
+        }
+
+        return View(MapMultiIds);
+
+    }
+
+
+    [HttpPost]
+    public IActionResult Multiple_Map_Requests(List<int> ids, int[] ReqIds)
+    {
+        var newPrice = 0;
+        foreach (var itemid in ids)
+        {
+            _mapRepository.EditMap(
+
                 new Map
                 {
-
-                    MapId = model.MapId,
+                    MapId = itemid,
                     Requests = ReqIds.Select(id => _requestRepository.Requests.FirstOrDefault(i => i.RequestId == id)).ToList()
                 }
             );
 
 
 
+
+
             var enum_Requests = ReqIds.Select(id => _requestRepository.Requests.FirstOrDefault(i => i.RequestId == id)).ToList(); //değer almak için sadece
-            var newPrice = 0;
+
             foreach (var item in enum_Requests)
             {
                 newPrice += item.RequestPrice;
             }
 
-            var user = _userRepository.Users.FirstOrDefault(user => user.Maps.Any(map => map.MapId == model.MapId));
-
-            _userRepository.EditUserPrice( //Map e requestler ücreetlerini yolluyor
-                           new User
-                           {
-                               UserPrice = newPrice,
-                               UserId = user.UserId
-                           }
-                       );
-
-            return RedirectToAction("Index");
         }
+        var user = _userRepository.Users.FirstOrDefault(user => user.Maps.Any(map => map.MapId == ids[0]));
 
+        _userRepository.EditUserPrice(
+                       new User
+                       {
+                           UserPrice = newPrice,
+                           UserId = user.UserId
+                       }
+                   );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        [HttpGet]
-        public async Task<IActionResult> Multiple_Map_Requests(List<int> ids)// 1den fazla map seçildiğinde onun requestlerinin seçilmesi
-        {
-            if (ids == null)
-            {
-                return NotFound();
-            }
-
-            var maps = await _mapRepository.Maps
-                .Where(x => ids.Contains(x.MapId)).ToListAsync();
-
-
-            ViewBag.yyy = await _requestRepository.Requests.ToListAsync();
-
-            var MapMultiIds = new List<int>();
-
-            foreach (var item in maps)
-            {
-                MapMultiIds.Add(item.MapId);
-            }
-
-            return View(MapMultiIds);
-
-        }
-
-
-        [HttpPost]
-        public IActionResult Multiple_Map_Requests(List<int> ids, int[] ReqIds)
-        {
-            var newPrice = 0;
-            foreach (var itemid in ids)
-            {
-                _mapRepository.EditMap(
-
-                    new Map
-                    {
-                        MapId = itemid,
-                        Requests = ReqIds.Select(id => _requestRepository.Requests.FirstOrDefault(i => i.RequestId == id)).ToList()
-                    }
-                );
-
-
-
-
-
-                var enum_Requests = ReqIds.Select(id => _requestRepository.Requests.FirstOrDefault(i => i.RequestId == id)).ToList(); //değer almak için sadece
-
-                foreach (var item in enum_Requests)
-                {
-                    newPrice += item.RequestPrice;
-                }
-
-            }
-            var user = _userRepository.Users.FirstOrDefault(user => user.Maps.Any(map => map.MapId == ids[0]));
-
-            _userRepository.EditUserPrice(
-                           new User
-                           {
-                               UserPrice = newPrice,
-                               UserId = user.UserId
-                           }
-                       );
-
-            return RedirectToAction("Index");
-        }
-
-
-
-        [HttpGet]
-        public async Task<IActionResult> Change_Map(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var map = await _mapRepository.Maps.FirstOrDefaultAsync(p => p.MapId == id);
-            ViewBag.mapslist = await _mapRepository.Maps.Where(x => x.UserId != id && x.MapIsActive == true).ToListAsync(); //.Where(x=>x.UserId!=id) tüm liste için sil
-
-            return View(map);
-        }
-
-
-
-
-
-
-        [HttpPost]
-        public IActionResult Change_Map(int MapId, string MapCoordinate)
-        {
-            var newmap =  _mapRepository.Maps.Include(x=>x.User).Include(x=>x.Requests).FirstOrDefault(p => p.MapCoordinate == MapCoordinate);
-            var oldmap =  _mapRepository.Maps.Include(x=>x.User).Include(x=>x.Requests).FirstOrDefault(p => p.MapId == MapId);
-            
-
-                _mapRepository.EditMap5addrequser(
-
-                    new Map
-                    {
-                        MapId = newmap.MapId,
-                        UserId=oldmap.UserId,
-                        Requests = oldmap.Requests,
-                        MapIsActive = false
-                    }
-                );
-
-              _mapRepository.EditMap4delrequser(
-
-                    new Map
-                    {
-                        MapId = oldmap.MapId,
-                        MapIsActive = true
-                    }
-                );
-
-            return RedirectToAction("Index");
-        }
+        return RedirectToAction("Index");
     }
+
+
+
+    [HttpGet]
+    public async Task<IActionResult> Change_Map(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var map = await _mapRepository.Maps.FirstOrDefaultAsync(p => p.MapId == id);
+        ViewBag.mapslist = await _mapRepository.Maps.Where(x => x.UserId != id && x.MapIsActive == true).ToListAsync(); //.Where(x=>x.UserId!=id) tüm liste için sil
+
+        return View(map);
+    }
+
+
+
+
+
+
+    [HttpPost]
+    public IActionResult Change_Map(int MapId, string MapCoordinate)
+    {
+        var newmap = _mapRepository.Maps.Include(x => x.User).Include(x => x.Requests).FirstOrDefault(p => p.MapCoordinate == MapCoordinate);
+        var oldmap = _mapRepository.Maps.Include(x => x.User).Include(x => x.Requests).FirstOrDefault(p => p.MapId == MapId);
+
+
+        _mapRepository.EditMap5addrequser(
+
+            new Map
+            {
+                MapId = newmap.MapId,
+                UserId = oldmap.UserId,
+                Requests = oldmap.Requests,
+                MapIsActive = false
+            }
+        );
+
+        _mapRepository.EditMap4delrequser(
+
+              new Map
+              {
+                  MapId = oldmap.MapId,
+                  MapIsActive = true
+              }
+          );
+
+        return RedirectToAction("Index");
+    }
+}
 }
