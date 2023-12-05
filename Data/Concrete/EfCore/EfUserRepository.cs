@@ -50,22 +50,13 @@ namespace FieldRent.Data.Concrete
             if (entity != null)
             {
                 entity.Maps.AddRange(user.Maps.Where(m => !entity.Maps.Contains(m)));
-                entity.UserPrice = entity.UserPrice+user.UserPrice;
+                //entity.UserPrice = entity.UserPrice+user.UserPrice;
                 _context.SaveChanges();
             }
         }
 
 
 
-        public void EditUserPrice(User user)
-        {
-            var entity = _context.Users.FirstOrDefault(i => i.UserId == user.UserId);
-
-            if (entity != null)
-            {
-                entity.UserPrice = entity.UserPrice+user.UserPrice;
-                _context.SaveChanges();
-            }
-        }
+       
     }
 }

@@ -95,22 +95,7 @@ namespace FieldRent.Controllers
 
 
 
-        var enum_Requests = ReqIds.Select(id => _requestRepository.Requests.FirstOrDefault(i => i.RequestId == id)).ToList(); //değer almak için sadece
-        var newPrice = 0;
-        foreach (var item in enum_Requests)
-        {
-            newPrice += item.RequestPrice;
-        }
 
-        var user = _userRepository.Users.FirstOrDefault(user => user.Maps.Any(map => map.MapId == model.MapId));
-
-        _userRepository.EditUserPrice( //Map e requestler ücreetlerini yolluyor
-                       new User
-                       {
-                           UserPrice = newPrice,
-                           UserId = user.UserId
-                       }
-                   );
 
         return RedirectToAction("Index");
     }
@@ -158,7 +143,7 @@ namespace FieldRent.Controllers
     [HttpPost]
     public IActionResult Multiple_Map_Requests(List<int> ids, int[] ReqIds)
     {
-        var newPrice = 0;
+        
         foreach (var itemid in ids)
         {
             _mapRepository.EditMap(
@@ -171,26 +156,10 @@ namespace FieldRent.Controllers
             );
 
 
-
-
-
-            var enum_Requests = ReqIds.Select(id => _requestRepository.Requests.FirstOrDefault(i => i.RequestId == id)).ToList(); //değer almak için sadece
-
-            foreach (var item in enum_Requests)
-            {
-                newPrice += item.RequestPrice;
-            }
+           
 
         }
-        var user = _userRepository.Users.FirstOrDefault(user => user.Maps.Any(map => map.MapId == ids[0]));
-
-        _userRepository.EditUserPrice(
-                       new User
-                       {
-                           UserPrice = newPrice,
-                           UserId = user.UserId
-                       }
-                   );
+        
 
         return RedirectToAction("Index");
     }

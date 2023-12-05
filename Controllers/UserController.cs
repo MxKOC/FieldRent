@@ -84,18 +84,9 @@ namespace FieldRent.Controllers
 
 
             var Enum_Maps = MapIds.Select(id => _mapRepository.Maps.Include(i => i.Requests).FirstOrDefault(i => i.MapId == id)).ToList();
-            var ReqDeletePrice = 0;
-            var deletePrice = 0;
             foreach (var item in Enum_Maps)
             {
-                ReqDeletePrice = 0;
-                var listReq = item.Requests;
-                foreach (var itemreq in listReq)
-                {
-                    ReqDeletePrice += itemreq.RequestPrice;
-                }
-                deletePrice += item.MapPrice + ReqDeletePrice;
-
+  
                 _mapRepository.EditMap3reqdelete(
 
                     new Map
@@ -125,15 +116,7 @@ namespace FieldRent.Controllers
             );
 
 
-            _userRepository.EditUserPrice(
-                new User
-                {
-                    UserPrice = -deletePrice,/////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    UserId = model.UserId,
-
-
-                }
-            );
+            
 
             return RedirectToAction("Index");
         }
@@ -242,7 +225,6 @@ namespace FieldRent.Controllers
 
 
             var Enum_Maps = MapIds.Select(id => _mapRepository.Maps.FirstOrDefault(i => i.MapId == id)).ToList();
-            var newPrice = 0;
             foreach (var item in Enum_Maps)
             {
 
@@ -269,13 +251,12 @@ namespace FieldRent.Controllers
                     }
                 );
 
-                newPrice += item.MapPrice;
             }
 
             _userRepository.EditUser2(
                 new User
                 {
-                    UserPrice = newPrice,
+                    
                     UserId = model.UserId,
                     Maps = MapIds.Select(id => _mapRepository.Maps.FirstOrDefault(i => i.MapId == id)).ToList()
                 }

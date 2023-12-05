@@ -8,6 +8,6 @@ namespace FieldRent.Data.Abstract
         void CreateUser(User user);
         void EditUser(User user);
         void EditUser2(User user);
-        void EditUserPrice(User user);
+
     }
 }

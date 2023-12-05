@@ -21,8 +21,8 @@ namespace FieldRent.Data.Concrete.EfCore
                 if (!context.Users.Any())
                 {
                     context.Users.AddRange(
-                        new User { UserName = "muhammed", Name = "Muhammed Koç", Email = "info@muhammed.com", Password = "123456", UserPrice=0, },
-                        new User { UserName = "said", Name = "Said Darıcı", Email = "info@said.com", Password = "123456", UserPrice=0, }
+                        new User { UserName = "muhammed", Name = "Muhammed Koç", Email = "info@muhammed.com", Password = "123456" },
+                        new User { UserName = "said", Name = "Said Darıcı", Email = "info@said.com", Password = "123456",  }
                     );
                     context.SaveChanges();
                 }
