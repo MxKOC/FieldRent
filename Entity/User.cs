@@ -9,6 +9,6 @@ public class User
     public int UserPrice { get; set; }
 
     public List<Map> Maps { get; set; } = new List<Map>();
-
+    //null ları kaldır
 
 }

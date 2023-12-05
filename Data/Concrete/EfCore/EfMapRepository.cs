@@ -96,5 +96,22 @@ namespace FieldRent.Data.Concrete
                 _context.SaveChanges();
             }
         }
+
+        public void EditMap6Duration(Map map)
+        {
+            var entity = _context.Maps.FirstOrDefault(i => i.MapId == map.MapId);
+
+
+            if (entity != null)
+            {
+                    entity.Time=map.Time;
+                    entity.MapStart=map.MapStart;
+                    entity.MapStop=map.MapStop;
+
+                    
+                _context.SaveChanges();
+            }
+        }
+
     }
 }

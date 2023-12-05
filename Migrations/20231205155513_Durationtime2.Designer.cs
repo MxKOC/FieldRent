@@ -3,6 +3,7 @@ using System;
 using FieldRent.Data.Concrete.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FieldRent.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    partial class BlogContextModelSnapshot : ModelSnapshot
+    [Migration("20231205155513_Durationtime2")]
+    partial class Durationtime2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.12");
@@ -25,6 +28,12 @@ namespace FieldRent.Migrations
 
                     b.Property<string>("FieldCoordinate")
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("FieldImage")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("FieldIsActive")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("FieldId");
 
@@ -58,7 +67,10 @@ namespace FieldRent.Migrations
                     b.Property<DateTime?>("MapStop")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Time")
+                    b.Property<string>("MapUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Time")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("UserId")
@@ -79,11 +91,20 @@ namespace FieldRent.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("RequestIsActive")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("RequestName")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("RequestPrice")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("RequestStart")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("RequestStop")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("RequestId");
 

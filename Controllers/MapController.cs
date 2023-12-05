@@ -50,30 +50,6 @@ namespace FieldRent.Controllers
 
 
 
-        [HttpGet]
-        public IActionResult Deneme()
-        {
-
-
-            var times = Enum.GetValues(typeof(Duration)).Cast<Duration>();
-
-            ViewBag.TimeList = new SelectList(times);
-            return View();
-
-        }
-
-
-
-        [HttpPost]
-        public IActionResult Deneme(DurationViewModel model)
-        {
-
-
-            var time = model.Time;
-            return RedirectToAction("Index");
-        }
-
-    
 
 
     [HttpGet]

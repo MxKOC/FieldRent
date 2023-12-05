@@ -11,6 +11,7 @@ namespace FieldRent.Data.Abstract
         void EditMap3reqdelete(Map map);
         void EditMap4delrequser(Map map);
         void EditMap5addrequser(Map map);
+        void EditMap6Duration(Map map);
         
     }
 }

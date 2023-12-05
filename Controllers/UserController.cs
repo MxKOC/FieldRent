@@ -187,12 +187,79 @@ namespace FieldRent.Controllers
 
 
             var time = model.Time;
+            var newtime = DateTime.Now;
+
+
+            if (time == Duration.Daily)
+            {
+                newtime = DateTime.Now.AddDays(1);
+            }
+            else if (time == Duration.Weekly)
+            {
+                newtime = DateTime.Now.AddDays(7);
+            }
+            else if (time == Duration.Mountly)
+            {
+                newtime = DateTime.Now.AddMonths(1);
+            }
+            else if (time == Duration.Yearly)
+            {
+                newtime = DateTime.Now.AddYears(1);
+            }
+
+            /*int option = time;
+
+            DateTime newtime;
+
+            switch (option)
+            {
+                case 1:
+                    newtime = DateTime.Now.AddYears(1);
+                    break;
+                case 2:
+                    newtime = DateTime.Now.AddMonths(1);
+                    break;
+                case 3:
+                    newtime = DateTime.Now.AddDays(7);
+                    break;
+                case 4:
+                    newtime = DateTime.Now.AddDays(1);
+                    break;
+                default:
+                    newtime = DateTime.Now;
+                    break;
+            }
+
+
+
+            var newtime = DateTime.Now.AddMonths(1);
+            var newtime = DateTime.Now.AddDays(7);
+            var newtime = DateTime.Now.AddDays(1);
+
+            
+*/
+
+
 
             var Enum_Maps = MapIds.Select(id => _mapRepository.Maps.FirstOrDefault(i => i.MapId == id)).ToList();
-
             var newPrice = 0;
             foreach (var item in Enum_Maps)
             {
+
+
+                _mapRepository.EditMap6Duration(
+
+                    new Map
+                    {
+                        MapId = item.MapId,
+                        Time = time,
+                        MapStart = DateTime.Now,
+                        MapStop = newtime
+                    }
+                );
+
+
+
                 _mapRepository.EditMap2(
 
                     new Map

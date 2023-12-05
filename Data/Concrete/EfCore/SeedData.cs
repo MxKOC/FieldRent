@@ -34,8 +34,6 @@ namespace FieldRent.Data.Concrete.EfCore
                         new Field
                         {
                             FieldCoordinate = "FirstArea",
-                            FieldImage = "FirstArea",
-                            FieldIsActive = true,
                         });
 
 
@@ -49,12 +47,7 @@ namespace FieldRent.Data.Concrete.EfCore
                             MapCoordinate = "a1",
                             MapPrice = 100,
                             MapCondition = "Boş",
-                            MapUrl = "a1",
                             MapIsActive = true,
-                            MapStart = DateTime.Now.AddDays(-1),
-                            MapStop = DateTime.Now.AddDays(-10),
-                            Requests = context.Requests.Take(1).ToList(),
-                            UserId = 1,
                             FieldId=1
                         },
                         new Map
@@ -62,12 +55,7 @@ namespace FieldRent.Data.Concrete.EfCore
                             MapCoordinate = "b2",
                             MapPrice = 200,
                             MapCondition = "Nadas",
-                            MapUrl = "b2",
                             MapIsActive = true,
-                            MapStart = DateTime.Now.AddDays(-10),
-                            MapStop = DateTime.Now.AddDays(-20),
-                            Requests = context.Requests.Take(1).ToList(),
-                            UserId = 2,
                             FieldId=1
                         },
                         new Map
@@ -75,12 +63,7 @@ namespace FieldRent.Data.Concrete.EfCore
                             MapCoordinate = "c3",
                             MapPrice = 300,
                             MapCondition = "Nadas",
-                            MapUrl = "c3",
                             MapIsActive = true,
-                            MapStart = DateTime.Now.AddDays(-20),
-                            MapStop = DateTime.Now.AddDays(-30),
-                            Requests = context.Requests.Take(1).ToList(),
-                            UserId = 2,
                             FieldId=1
                         },
                         new Map
@@ -88,12 +71,7 @@ namespace FieldRent.Data.Concrete.EfCore
                             MapCoordinate = "c4",
                             MapPrice = 400,
                             MapCondition = "Nadas",
-                            MapUrl = "c4",
                             MapIsActive = true,
-                            MapStart = DateTime.Now.AddDays(-20),
-                            MapStop = DateTime.Now.AddDays(-30),
-                            Requests = context.Requests.Take(1).ToList(),
-                            UserId = 2,
                             FieldId=1
                         },
                         new Map
@@ -101,12 +79,7 @@ namespace FieldRent.Data.Concrete.EfCore
                             MapCoordinate = "c5",
                             MapPrice = 500,
                             MapCondition = "Nadas",
-                            MapUrl = "c5",
                             MapIsActive = true,
-                            MapStart = DateTime.Now.AddDays(-20),
-                            MapStop = DateTime.Now.AddDays(-30),
-                            Requests = context.Requests.Take(1).ToList(),
-                            UserId = 2,
                             FieldId=1
                         }
 
@@ -124,32 +97,23 @@ namespace FieldRent.Data.Concrete.EfCore
                         {
                             RequestName = "AAA",
                             RequestPrice = 1,
-                            RequestStart = DateTime.Now.AddDays(-10),
-                            RequestStop = DateTime.Now.AddDays(-20),
-                            RequestIsActive = true,
 
-                            Maps = context.Maps.Take(1).ToList(),
+
                         },
 
                         new Request
                         {
                             RequestName = "BBB",
                             RequestPrice = 2,
-                            RequestStart = DateTime.Now.AddDays(-20),
-                            RequestStop = DateTime.Now.AddDays(-30),
-                            RequestIsActive = true,
 
-                            Maps = context.Maps.Take(1).ToList(),
+
                         },
                         new Request
                         {
                             RequestName = "CCC",
                             RequestPrice = 3,
-                            RequestStart = DateTime.Now.AddDays(-30),
-                            RequestStop = DateTime.Now.AddDays(-40),
-                            RequestIsActive = true,
 
-                            Maps = context.Maps.Take(2).ToList(),
+
                         }
                     );
                     context.SaveChanges();
