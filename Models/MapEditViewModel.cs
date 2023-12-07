@@ -13,7 +13,7 @@ namespace FieldRent.Models
 
         public List<Map> MapCheckIds { get; set; } = new List<Map>();
 
-
+        [Required]
         public Duration Time { get; set; }
 
     }
