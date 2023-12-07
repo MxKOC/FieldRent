@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\MK\VSCode asp.net\ApProject\FieldRent
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/CreateField.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlRmllbGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

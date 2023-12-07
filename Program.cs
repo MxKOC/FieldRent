@@ -17,6 +17,7 @@ builder.Services.AddDbContext<BlogContext>(options => { options.UseSqlite(builde
 builder.Services.AddScoped<IRequestRepository, EfRequestRepository>();
 builder.Services.AddScoped<IMapRepository, EfMapRepository>();
 builder.Services.AddScoped<IUserRepository, EfUserRepository>();
+builder.Services.AddScoped<IFieldRepository, EfFieldRepository>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
     options.LoginPath = "/Users/Login";

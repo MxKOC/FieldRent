@@ -10,17 +10,20 @@
                 <hr>
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="MapId">
+                
 
                 
                 
-                <div class="mb-3">
-                    <label asp-for="MapCoordinate" class="form-label"></label>
-                    <input asp-for="MapCoordinate" class="form-control"></input>
-                </div>
                 
-
-
+                
+                <select name="selectId">
+                    @foreach (var map in ViewBag.maplist2)
+                    {
+                        <option value="@map.MapId">@map.MapCoordinate</option>
+                    }
+                </select>
+            
+                
 
 
                 <button type="submit" class="btn btn-primary">Kaydet</button>

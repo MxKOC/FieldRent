@@ -56,8 +56,8 @@ namespace FieldRent.Data.Concrete
 
             if (entity != null)
             {
-                    entity.Requests.Clear();
-                    entity.MapIsActive = map.MapIsActive;
+                entity.Requests.Clear();
+                entity.MapIsActive = map.MapIsActive;
 
                 _context.SaveChanges();
             }
@@ -72,10 +72,13 @@ namespace FieldRent.Data.Concrete
 
             if (entity != null)
             {
-                    entity.UserId=null;
-                    entity.Requests=null;
-                    entity.MapIsActive = map.MapIsActive;
-                    
+                entity.UserId = null;
+                entity.Requests = null;
+                entity.MapIsActive = map.MapIsActive;
+                entity.MapStart = map.MapStart;
+                entity.MapStop = map.MapStop;
+                entity.Time = map.Time;
+
                 _context.SaveChanges();
             }
         }
@@ -89,10 +92,12 @@ namespace FieldRent.Data.Concrete
 
             if (entity != null)
             {
-                    entity.UserId=map.UserId;
-                    entity.Requests = map.Requests;
-                    entity.MapIsActive = map.MapIsActive;
-                    
+                entity.UserId = map.UserId;
+                entity.Requests = map.Requests;
+                entity.MapIsActive = map.MapIsActive;
+                entity.MapStart = map.MapStart;
+                entity.MapStop = map.MapStop;
+                entity.Time = map.Time;
                 _context.SaveChanges();
             }
         }
@@ -104,11 +109,12 @@ namespace FieldRent.Data.Concrete
 
             if (entity != null)
             {
-                    entity.Time=map.Time;
-                    entity.MapStart=map.MapStart;
-                    entity.MapStop=map.MapStop;
+                entity.Time = map.Time;
+                entity.MapStart = map.MapStart;
+                entity.MapStop = map.MapStop;
+                
 
-                    
+
                 _context.SaveChanges();
             }
         }
