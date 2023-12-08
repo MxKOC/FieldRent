@@ -61,12 +61,12 @@ namespace FieldRent.Controllers
 
 
 
-            if (User.IsInRole("admin"))
-            {
+            //if (User.IsInRole("admin"))
+            //{
                 return View();
-            }
+           // }
 
-            return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
 
         }
 

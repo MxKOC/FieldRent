@@ -1,0 +1,69 @@
+@model List<Map>
+
+
+    <div class="row">
+        <div class="col-12">
+            
+            @{var userNameClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
+                var userName = userNameClaim?.Value;}
+                <h2>@userName</h2>
+            <table class="table tabled-bordered mt-3">
+                <thead>
+                    <tr>
+
+                        <th>MapdId</th>
+                        <th>Name</th>
+                        <th>Requests</th>
+                        <th>UserId</th>
+                        <th>UserName</th>
+                        <th style="width: 125px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                    <tr>
+                        <td>@item.MapId</td>
+                        <td>@item.MapCoordinate</td>
+                        <td>
+                            <ul>
+                                @foreach (var request in item.Requests)
+                                {
+                                <li>@request.RequestId -> @request.RequestName</li>
+                                }
+                            </ul>
+                        </td>
+
+                        <td>@(item.UserId != null ? item.UserId : 0) </td>
+
+                        @if(@item.UserId != null){
+                        <td>@item.User.UserName </td>
+                        }
+                        else{
+                        <td>null </td>
+                        }
+
+
+                        <td>
+                            <a asp-controller="User" asp-action="Add_Request" asp-route-id="@item.MapId"
+                                class="btn btn-sm btn-primary">Add Request</a>
+                            <a asp-controller="User" asp-action="Change_Map" asp-route-id="@item.MapId"
+                                class="btn btn-sm btn-primary">Change Place</a>
+                            <a asp-controller="User" asp-action="Details" asp-route-id="@item.MapId"
+                                class="btn btn-sm btn-primary">Map Details</a>
+
+                        </td>
+                    </tr>
+                    }
+                    
+                    @{var userIdClaim2 = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                    var userId = userIdClaim2?.Value;}
+                    <a asp-controller="User" asp-action="Rent_Map" asp-route-id="@userId"
+                        class="btn btn-sm btn-primary">Rent</a>
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
