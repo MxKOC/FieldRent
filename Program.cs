@@ -19,9 +19,7 @@ builder.Services.AddScoped<IMapRepository, EfMapRepository>();
 builder.Services.AddScoped<IUserRepository, EfUserRepository>();
 builder.Services.AddScoped<IFieldRepository, EfFieldRepository>();
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
-    options.LoginPath = "/Users/Login";
-});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {options.LoginPath = "/Login/Login";});
 
 var app = builder.Build();
 

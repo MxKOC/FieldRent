@@ -24,7 +24,7 @@ public class LoginController : Controller
     {
         if (User.Identity!.IsAuthenticated)    //user girişi yoksa
         {
-            return RedirectToAction("Index", "Map");
+            return RedirectToAction("IndexMap", "Admin");
         }
         return View();
     }
@@ -56,7 +56,7 @@ public class LoginController : Controller
                 userClaims.Add(new Claim(ClaimTypes.Name, isUser.UserName ?? ""));
                 userClaims.Add(new Claim(ClaimTypes.GivenName, isUser.Name ?? ""));
 
-                if (isUser.Email == "info@sadikturan.com")
+                if (isUser.Email == "info@muhammed.com")
                 {
                     userClaims.Add(new Claim(ClaimTypes.Role, "admin"));
                 }
@@ -75,7 +75,7 @@ public class LoginController : Controller
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
 
-                return RedirectToAction("Index", "Map");
+                return RedirectToAction("IndexMap", "Admin");
             }
             else
             {

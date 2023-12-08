@@ -17,7 +17,7 @@ public class Map
     public DateTime? MapStart { get; set; }
     public DateTime? MapStop { get; set; }
     public bool MapIsActive { get; set; }
-    [Required]
+
     public Duration? Time { get; set; }
 
     public int? UserId { get; set; }

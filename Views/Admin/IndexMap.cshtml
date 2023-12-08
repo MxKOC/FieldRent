@@ -43,9 +43,9 @@
 
 
                             <td>
-                                <a asp-controller="Map" asp-action="Map_Requests" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Request</a>
-                                <a asp-controller="Map" asp-action="Change_Map" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Change</a>
-                                <a asp-controller="Map" asp-action="Details" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Details</a>
+                                <a asp-controller="Admin" asp-action="Map_Requests" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Request</a>
+                                <a asp-controller="Admin" asp-action="Change_Map" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Change</a>
+                                <a asp-controller="Admin" asp-action="DetailsMap" asp-route-id="@item.MapId" class="btn btn-sm btn-primary">Details</a>
                             </td>
                         </tr>
                     }

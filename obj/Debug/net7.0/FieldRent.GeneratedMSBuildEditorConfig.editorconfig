@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\MK\VSCode asp.net\ApProject\FieldRent
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/Change_Map.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2hhbmdlX01hcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/CreateField.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlRmllbGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -28,12 +32,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/DetailsMap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc01hcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/FirstUserMap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRmlyc3RVc2VyTWFwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/IndexMap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhNYXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/Map_Requests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFwX1JlcXVlc3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Admin/Multiple_Map_Requests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTXVsdGlwbGVfTWFwX1JlcXVlc3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Home/Index.cshtml]
@@ -46,26 +66,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Map/Change_Map.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFwXENoYW5nZV9NYXAuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Map/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFwXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Map/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFwXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Map/Map_Requests.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFwXE1hcF9SZXF1ZXN0cy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Map/Multiple_Map_Requests.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFwXE11bHRpcGxlX01hcF9SZXF1ZXN0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MK/VSCode asp.net/ApProject/FieldRent/Views/Shared/Error.cshtml]
