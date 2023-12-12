@@ -39,14 +39,16 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Index()
         {
-            var users = await _userRepository.Users.Include(x => x.Maps).ToListAsync();
+            var users = await _userRepository.Users.Where(x=>x.IsAdmin==false).Include(x => x.Maps).ToListAsync();
             return View(users);
         }
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Details(int? id)
         {
             var user = await _userRepository.Users.Include(x => x.Maps).FirstOrDefaultAsync(x => x.UserId == id);
@@ -115,6 +117,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteMap(int? id)
         {
             if (id == null)
@@ -199,6 +202,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> FirstUserMap(int? id)
         {
             if (id == null)
@@ -379,6 +383,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> IndexMap()
         {
             var maps = await _mapRepository.Maps.Include(x => x.Requests).Include(x => x.User).ToListAsync();
@@ -388,6 +393,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DetailsMap(int? id)
         {
             var map = await _mapRepository.Maps.Include(x => x.User).Include(x => x.Requests).FirstOrDefaultAsync(x => x.MapId == id);
@@ -399,6 +405,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Map_Requests(int? id)  // Sadece 1 map seçildiğinde onun requestlerinin seçilmesi
         {
             if (id == null)
@@ -461,6 +468,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Multiple_Map_Requests(List<int> ids)// 1den fazla map seçildiğinde onun requestlerinin seçilmesi
         {
             if (ids == null)
@@ -513,6 +521,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Change_Map(int? id)
         {
             if (id == null)

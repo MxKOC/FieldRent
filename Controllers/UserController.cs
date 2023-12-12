@@ -9,6 +9,7 @@ using FieldRent.Entity;
 using FieldRent.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -36,6 +37,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "NonAdmin")]
         public async Task<IActionResult> Index()
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "");
@@ -53,6 +55,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "NonAdmin")]
         public async Task<IActionResult> Details(int? id)
         {
             var map = await _mapRepository.Maps.Include(x => x.User).Include(x => x.Requests).FirstOrDefaultAsync(x => x.MapId == id);
@@ -73,6 +76,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "NonAdmin")]
         public async Task<IActionResult> Rent_Map(int? id)
         {
             if (id == null)
@@ -220,6 +224,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "NonAdmin")]
         public async Task<IActionResult> Add_Request(int? id)  // Sadece 1 map seçildiğinde onun requestlerinin seçilmesi
         {
             if (id == null)
@@ -274,6 +279,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "NonAdmin")]
         public async Task<IActionResult> Multiple_Add_Request(List<int> ids)// 1den fazla map seçildiğinde onun requestlerinin seçilmesi
         {
             if (ids == null)
@@ -329,6 +335,7 @@ namespace FieldRent.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "NonAdmin")]
         public async Task<IActionResult> Change_Map(int? id)
         {
             if (id == null)

@@ -11,7 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-
+builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("NonAdmin", policy => policy.RequireAssertion(context =>
+            !context.User.IsInRole("admin")));
+    });
 builder.Services.AddDbContext<BlogContext>(options => { options.UseSqlite(builder.Configuration["ConnectionStrings:Sql_connection"]); });
 
 builder.Services.AddScoped<IRequestRepository, EfRequestRepository>();
