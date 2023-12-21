@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 
 namespace FieldRent.Controllers
 {
-    //[Authorize(Roles = "admin")]   ///////////////////////////Başka user giriş yapıp tıklayınca patlıyor
+    //[Authorize(Roles = "admin")]   //////////////////////////////Başka user giriş yapıp tıklayınca patlıyor
     public class AdminController : Controller
     {
 
