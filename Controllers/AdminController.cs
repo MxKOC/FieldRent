@@ -75,6 +75,7 @@ namespace FieldRent.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public IActionResult CreateField(int number)
         {
 
