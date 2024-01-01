@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MK\\VSCode asp.net\\ApProject\\FieldRent\\FieldRent.csproj": {}
+    "C:\\Users\\cem_k\\Source\\Repos\\FieldRentv3\\FieldRent.csproj": {}
   },
   "projects": {
-    "D:\\MK\\VSCode asp.net\\ApProject\\FieldRent\\FieldRent.csproj": {
+    "C:\\Users\\cem_k\\Source\\Repos\\FieldRentv3\\FieldRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MK\\VSCode asp.net\\ApProject\\FieldRent\\FieldRent.csproj",
+        "projectUniqueName": "C:\\Users\\cem_k\\Source\\Repos\\FieldRentv3\\FieldRent.csproj",
         "projectName": "FieldRent",
-        "projectPath": "D:\\MK\\VSCode asp.net\\ApProject\\FieldRent\\FieldRent.csproj",
-        "packagesPath": "C:\\Users\\Mkoc\\.nuget\\packages\\",
-        "outputPath": "D:\\MK\\VSCode asp.net\\ApProject\\FieldRent\\obj\\",
+        "projectPath": "C:\\Users\\cem_k\\Source\\Repos\\FieldRentv3\\FieldRent.csproj",
+        "packagesPath": "C:\\Users\\cem_k\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cem_k\\Source\\Repos\\FieldRentv3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Mkoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cem_k\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
